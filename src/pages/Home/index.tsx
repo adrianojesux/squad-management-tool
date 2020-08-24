@@ -1,5 +1,6 @@
 import React from "react";
 import Panel from "./../../components/Panel";
+import Table from "./../../components/Table";
 
 import { Container } from "./styles";
 
@@ -11,7 +12,7 @@ const Home: React.FC = () => {
   return (
     <Container>
       <Panel title="My teams" action={<Action />}>
-        <Action />{" "}
+        <Table />
       </Panel>
       <div />
       <Panel title="My teams" />
