@@ -23,9 +23,13 @@ export const Container = styled.table.attrs({
   }
 
   tr {
-    height: 50px;
+    height: 30px;
     font-family: "Roboto", sans-serif;
     margin-top: 4px;
+
+    & + tr {
+      height: 50px;
+    }
 
     th {
       & + th {
@@ -35,6 +39,21 @@ export const Container = styled.table.attrs({
 
     td {
       border-bottom: solid 1px ${colors.gray};
+      transition: 0.3s ease-in-out;
+
+      .content-table {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        opacity: 0;
+      }
     }
 
     td,
@@ -44,6 +63,7 @@ export const Container = styled.table.attrs({
       font-size: 14px;
       font-weight: 600;
       font-family: "Roboto", sans-serif;
+      color: ${colors.dark};
     }
 
     &:hover {
@@ -55,6 +75,10 @@ export const Container = styled.table.attrs({
 
         & + td {
           border-radius: 0 10px 10px 0;
+        }
+
+        .content-table .actions {
+          opacity: 1;
         }
       }
     }

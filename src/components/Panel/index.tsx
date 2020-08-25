@@ -11,7 +11,7 @@ const Panel: React.FC<PanelProps> = ({ children, title, action }) => {
   return (
     <Container>
       <PanelHeader>
-        <h1>Title</h1>
+        <h1>{title}</h1>
         {action}
       </PanelHeader>
       <PanelBody>{children}</PanelBody>

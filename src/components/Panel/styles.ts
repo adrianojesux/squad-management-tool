@@ -10,7 +10,7 @@ const boxShadow = css`
 export const Container = styled.div`
   width: 100%;
   min-width: 100px;
-  min-height: 500px;
+  min-height: 200px;
   background-color: #fff;
   border-radius: 10px;
   ${boxShadow}
@@ -34,5 +34,5 @@ export const PanelHeader = styled.div`
 export const PanelBody = styled.div`
   width: 100%;
   height: 100%;
-  padding: 8px;
+  padding: 16px;
 `;
