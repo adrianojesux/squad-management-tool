@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 const Home = lazy(() => import("./pages/Home"));
+const CreateSquad = lazy(() => import("./pages/CreateSquad"));
 
 export default function () {
   return (
@@ -15,7 +16,8 @@ export default function () {
         <GlobalStyles />
         <Header />
         <Switch>
-          <Route path="" component={Home} />
+          <Route path="/" component={Home} exact />
+          <Route path="/create" component={CreateSquad} />
         </Switch>
         <Footer />
       </BrowserRouter>
