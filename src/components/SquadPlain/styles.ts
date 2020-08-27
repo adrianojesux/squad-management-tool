@@ -52,6 +52,8 @@ export const Camp = styled.div`
   margin: 1em 0;
   border-radius: 5px;
   position: relative;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
 
   &::after {
     content: '';
@@ -76,5 +78,29 @@ export const Camp = styled.div`
     background: transparent;
     border: solid 1px ${colors.gray};
     border-radius: 100%;
+  }
+`
+
+export const PlayerItemContainer = styled.div`
+  width: 80px;
+  height: 80px;
+  background-color: #ce9bbf;
+  border-radius: 100%;
+  margin: 1em auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px ${colors.dark};
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 86px;
+    height: 86px;
+    top: -6px;
+    left: -6px;
+    border-radius: 100%;
+    border: dashed 2px #ce9bbf;
   }
 `

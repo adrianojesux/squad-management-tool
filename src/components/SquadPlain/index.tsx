@@ -1,6 +1,13 @@
 import React from 'react'
+import { MdAdd } from 'react-icons/md'
 
-import { Container, InputSelect, Row, Camp } from './styles'
+import {
+  Container,
+  InputSelect,
+  Row,
+  Camp,
+  PlayerItemContainer,
+} from './styles'
 
 const SquadPlain: React.FC = () => {
   return (
@@ -11,8 +18,28 @@ const SquadPlain: React.FC = () => {
           <option value="Teste">Teste</option>
         </InputSelect>
       </Row>
-      <Camp></Camp>
+      <Camp>
+        <PlayerItem />
+        <PlayerItem />
+        <PlayerItem />
+        <PlayerItem />
+        <PlayerItem />
+        <PlayerItem />
+        <PlayerItem />
+        <PlayerItem />
+        <PlayerItem />
+        <PlayerItem />
+        <PlayerItem />
+      </Camp>
     </Container>
+  )
+}
+
+const PlayerItem = () => {
+  return (
+    <PlayerItemContainer>
+      <MdAdd size={40} color="#fff" />
+    </PlayerItemContainer>
   )
 }
 
