@@ -1,23 +1,53 @@
-import React from "react";
+import React from 'react'
 
-import { Container } from "./styles";
+import { Container } from './styles'
 
-const RadioInput: React.FC = () => {
+interface Field {
+  title: string
+  value: string
+  checked?: boolean
+}
+
+interface RadioInputProps {
+  fields: Array<Field>
+  name: string
+  title: string
+  onChange?: (value: Field) => void
+}
+
+const RadioInput: React.FC<RadioInputProps> = ({
+  fields,
+  title,
+  name,
+  onChange,
+}) => {
+  function onChangeValue(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = fields.find(f => (f.value = e.target.value))
+    if ('function' === typeof onChange && value) onChange(value)
+  }
+
   return (
     <Container>
-      <span>Type teams</span>
-      <label htmlFor="campo-radio1">
-        Opção
-        <span className="checkmark"></span>
-        <input type="radio" value="0" name="campo-radio" id="campo-radio1" />
-      </label>
-      <label htmlFor="campo-radio1">
-        Opção
-        <span className="checkmark"></span>
-        <input type="radio" value="0" name="campo-radio" id="campo-radio1" />
-      </label>
+      <span>{title}</span>
+      <div onChange={onChangeValue} className="content-input">
+        {fields &&
+          fields.length > 0 &&
+          fields.map((field: Field, index: number) => (
+            <label htmlFor={name + String(index)} key={field.value}>
+              <input
+                type="radio"
+                value={field.value}
+                name={name}
+                id={name + String(index)}
+                checked={field.checked}
+              />
+              <span>{field.title}</span>
+              <div className="check" />
+            </label>
+          ))}
+      </div>
     </Container>
-  );
-};
+  )
+}
 
-export default RadioInput;
+export default RadioInput

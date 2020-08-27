@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import colors from "../../styles/colors";
+import styled from 'styled-components';
+import colors from '../../styles/colors';
 
 export const Container = styled.div`
   width: 100%;
@@ -14,7 +14,7 @@ export const Container = styled.div`
   justify-content: space-between;
 
   &::after {
-    content: "";
+    content: '';
     width: 1px;
     height: 300px;
     background-color: ${colors.gray};
@@ -25,7 +25,7 @@ export const Container = styled.div`
   }
 
   &::before {
-    content: "";
+    content: '';
     width: 100px;
     height: 100px;
     position: absolute;
@@ -75,7 +75,7 @@ export const PhotoRounded = styled.div`
   margin: 0.5em 0;
 
   &::after {
-    content: "";
+    content: '';
     width: 135px;
     height: 135px;
     top: 50%;

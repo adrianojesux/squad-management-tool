@@ -19,23 +19,6 @@ export const Container = styled.div`
     font-weight: 600;
   }
 
-  input {
-    height: 40px;
-    border: solid 1px
-      ${(props: ContainerInputProps) =>
-        props.focused ? colors.purple : colors.gray};
-    font-size: 14px;
-    color: ${colors.dark};
-    border-radius: 5px;
-    padding: 0 8px;
-    font-family: 'Roboto', sans-serif;
-
-    &::placeholder {
-      font-size: 14px;
-      color: #ccc;
-    }
-  }
-
   textarea {
     border: solid 1px
       ${(props: ContainerInputProps) =>

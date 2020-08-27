@@ -1,19 +1,19 @@
-import React from "react";
-import { MdAdd } from "react-icons/md";
+import React from 'react'
+import { MdAdd } from 'react-icons/md'
 
-import Panel from "./../../components/Panel";
-import Table from "./../../components/Table";
-import HighList from "./../../components/HighList";
-import BalancePlayers from "./../../components/BalancePlayers";
+import Panel from './../../components/Panel'
+import Table from './../../components/Table'
+import HighList from './../../components/HighList'
+import BalancePlayers from './../../components/BalancePlayers'
 
-import { Container, ButtonAdd, Row } from "./styles";
-import { useHistory } from "react-router-dom";
+import { Container, ButtonAdd, Row } from './styles'
+import { useHistory } from 'react-router-dom'
 
 const Home: React.FC = () => {
-  const history = useHistory();
+  const history = useHistory()
 
   function openCreateSquadPage() {
-    history.push("/create");
+    history.push('/create')
   }
 
   return (
@@ -26,13 +26,7 @@ const Home: React.FC = () => {
           </ButtonAdd>
         }
       >
-        <Table
-          squads={[
-            { name: "Barcelona", description: "Barcelona Squad", players: [] },
-            { name: "Barcelona", description: "Barcelona Squad", players: [] },
-            { name: "Barcelona", description: "Barcelona Squad", players: [] },
-          ]}
-        />
+        <Table squads={[]} />
       </Panel>
       <div />
       <div>
@@ -45,7 +39,7 @@ const Home: React.FC = () => {
         <BalancePlayers />
       </div>
     </Container>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
