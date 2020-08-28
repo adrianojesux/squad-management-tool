@@ -9,3 +9,19 @@ export interface Squad {
   formation: string
   players: Array<Player>
 }
+
+export enum Position {
+  PK = 'pk',
+  ZAG = 'zag',
+  LAT = 'lat',
+  MD = 'md',
+  ATA = 'ata',
+}
+export interface PlayerPosition {
+  positionName: Position
+  player: Player
+}
+export interface Formation {
+  formationName: string
+  playerPositions: PlayerPosition[]
+}
