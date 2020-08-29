@@ -1,5 +1,7 @@
-import React, { useState, useCallback, useContext } from 'react'
+import React, { useState, useCallback, useContext, useEffect } from 'react'
 import { MdAdd } from 'react-icons/md'
+
+import SquadService from './../../services/squad'
 
 import {
   Container,
@@ -15,119 +17,27 @@ import colors from '../../styles/colors'
 import SquadContext from './../../pages/CreateSquad/contex'
 import { Formation, Position } from '../../interfaces/squad'
 
-const config: Formation[] = [
-  {
-    formationName: '4-4-2',
-    playerPositions: [
-      {
-        positionName: Position.PK,
-        player: new Player(),
-      },
-      {
-        positionName: Position.ZAG,
-        player: new Player(),
-      },
-      {
-        positionName: Position.ZAG,
-        player: new Player(),
-      },
-      {
-        positionName: Position.LAT,
-        player: new Player(),
-      },
-      {
-        positionName: Position.LAT,
-        player: new Player(),
-      },
-      {
-        positionName: Position.MD,
-        player: new Player(),
-      },
-      {
-        positionName: Position.MD,
-        player: new Player(),
-      },
-      {
-        positionName: Position.MD,
-        player: new Player(),
-      },
-      {
-        positionName: Position.MD,
-        player: new Player(),
-      },
-      {
-        positionName: Position.ATA,
-        player: new Player(),
-      },
-      {
-        positionName: Position.ATA,
-        player: new Player(),
-      },
-    ],
-  },
-  {
-    formationName: '4-3-3',
-    playerPositions: [
-      {
-        positionName: Position.PK,
-        player: new Player(),
-      },
-      {
-        positionName: Position.ZAG,
-        player: new Player(),
-      },
-      {
-        positionName: Position.ZAG,
-        player: new Player(),
-      },
-      {
-        positionName: Position.LAT,
-        player: new Player(),
-      },
-      {
-        positionName: Position.LAT,
-        player: new Player(),
-      },
-      {
-        positionName: Position.MD,
-        player: new Player(),
-      },
-      {
-        positionName: Position.MD,
-        player: new Player(),
-      },
-      {
-        positionName: Position.MD,
-        player: new Player(),
-      },
-      {
-        positionName: Position.ATA,
-        player: new Player(),
-      },
-      {
-        positionName: Position.ATA,
-        player: new Player(),
-      },
-      {
-        positionName: Position.ATA,
-        player: new Player(),
-      },
-    ],
-  },
-]
-
 interface SquadPlainProps {
   squad?: Formation
 }
 
 const SquadPlain: React.FC<SquadPlainProps> = ({ squad: squadFormation }) => {
   const { onPickPlayer, onSquadSelect } = useContext(SquadContext)
+  const [formations, setFormations] = useState<string[]>([])
+  const [squadWithFormations, setSquadWithFormations] = useState<Formation[]>(
+    []
+  )
+
+  useEffect(() => {
+    const formationsList = SquadService.getFormationList()
+    setFormations(formationsList)
+  }, [])
 
   function handleChangeSelectFormation(
     event: React.ChangeEvent<HTMLSelectElement>
   ): void {
     const { value } = event.target
-    const formationSelected = config.find(f => f.formationName === value)
+    const formationSelected = SquadService.getFormatedSquad(value)
     onSquadSelect({ ...(formationSelected as Formation) })
   }
 
@@ -141,12 +51,9 @@ const SquadPlain: React.FC<SquadPlainProps> = ({ squad: squadFormation }) => {
         <label htmlFor="">Formation</label>
         <InputSelect onChange={handleChangeSelectFormation}>
           <option value="">-- select ---</option>
-          {config.map(formation => (
-            <option
-              value={formation.formationName}
-              key={formation.formationName}
-            >
-              {formation.formationName}
+          {formations.map(formation => (
+            <option value={formation} key={formation}>
+              {formation}
             </option>
           ))}
         </InputSelect>
