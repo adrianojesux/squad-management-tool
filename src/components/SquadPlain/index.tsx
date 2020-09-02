@@ -24,9 +24,6 @@ interface SquadPlainProps {
 const SquadPlain: React.FC<SquadPlainProps> = ({ squad: squadFormation }) => {
   const { onPickPlayer, onSquadSelect } = useContext(SquadContext)
   const [formations, setFormations] = useState<string[]>([])
-  const [squadWithFormations, setSquadWithFormations] = useState<Formation[]>(
-    []
-  )
 
   useEffect(() => {
     const formationsList = SquadService.getFormationList()
@@ -38,6 +35,7 @@ const SquadPlain: React.FC<SquadPlainProps> = ({ squad: squadFormation }) => {
   ): void {
     const { value } = event.target
     const formationSelected = SquadService.getFormatedSquad(value)
+    console.log(formationSelected)
     onSquadSelect({ ...(formationSelected as Formation) })
   }
 

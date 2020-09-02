@@ -1,35 +1,29 @@
-import React from "react";
+import React from 'react'
 
-import { Container, TitleList, ListItem } from "./styles";
+import { Container, TitleList, ListItem } from './styles'
+interface SquadInfo {
+  squad_name: string
+  age_midle: number
+}
+interface HighListProps {
+  squads_info?: SquadInfo[]
+}
 
-const HighList: React.FC = () => {
+const HighList: React.FC<HighListProps> = ({ squads_info }) => {
   return (
     <div>
       <TitleList>Highest avg age</TitleList>
       <Container>
-        <ListItem>
-          <h4>Inter Milan</h4>
-          <span>31.9</span>
-        </ListItem>
-        <ListItem>
-          <h4>Inter Milan</h4>
-          <span>31.9</span>
-        </ListItem>
-        <ListItem>
-          <h4>Inter Milan</h4>
-          <span>31.9</span>
-        </ListItem>
-        <ListItem>
-          <h4>Inter Milan</h4>
-          <span>31.9</span>
-        </ListItem>
-        <ListItem>
-          <h4>Inter Milan</h4>
-          <span>31.9</span>
-        </ListItem>
+        {squads_info &&
+          squads_info.map(info => (
+            <ListItem>
+              <h4>{info.squad_name}</h4>
+              <span>{info.age_midle.toFixed(1)}</span>
+            </ListItem>
+          ))}
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default HighList;
+export default HighList
