@@ -1,13 +1,25 @@
 import { Player } from './player'
+import { uuid } from 'uuidv4'
 
-export interface Squad {
-  name: string
-  team_website: string
-  description: string
-  team_type: 'real' | 'fantasy'
-  tags: string[]
-  formation: string
-  players: Array<Player>
+export class Squad {
+  squad_id: string = ''
+  name: string = ''
+  team_website: string = ''
+  description: string = ''
+  team_type: 'real' | 'fantasy' = 'real'
+  tags: string[] = []
+  formation: string = ''
+  players: Array<PlayerPosition> = []
+
+  constructor(props?: Omit<Player, 'id'>, id?: string) {
+    if (props) {
+      Object.assign(this, props)
+    }
+    Object.assign(this, props)
+    if (!id) {
+      this.squad_id = uuid()
+    }
+  }
 }
 
 export enum Position {

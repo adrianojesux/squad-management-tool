@@ -18,4 +18,14 @@ export const Button = styled.button`
     transform: scale(0.99);
     color: ${colors.light};
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: inherit;
+
+    &:hover {
+      transform: none;
+      background-color: ${colors.purple};
+    }
+  }
 `

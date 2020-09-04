@@ -55,7 +55,8 @@ export const InputSelect = styled.select`
   }
 `
 export const Camp = styled.div`
-  width: 450px;
+  width: 100%;
+  min-width: 450px;
   height: 700px;
   background: linear-gradient(to bottom, rgb(184, 61, 124), rgb(102, 46, 135));
   margin: 1em 0;
@@ -66,7 +67,7 @@ export const Camp = styled.div`
 
   &::after {
     content: '';
-    width: 450px;
+    width: 100%;
     height: 1px;
     background-color: rgb(233, 227, 233);
     position: absolute;
