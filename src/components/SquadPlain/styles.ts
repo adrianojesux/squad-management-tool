@@ -1,5 +1,14 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import colors from '../../styles/colors'
+
+const formationAreas = css`
+  grid-template-areas:
+    'ata ata ata ata'
+    'md md md md'
+    'vol vol vol vol'
+    'def def def def'
+    'pk pk pk pk';
+`
 
 export const Container = styled.div`
   width: 100%;
@@ -46,18 +55,19 @@ export const InputSelect = styled.select`
   }
 `
 export const Camp = styled.div`
-  width: 450px;
+  width: 100%;
+  min-width: 450px;
   height: 700px;
   background: linear-gradient(to bottom, rgb(184, 61, 124), rgb(102, 46, 135));
   margin: 1em 0;
   border-radius: 5px;
   position: relative;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  ${formationAreas}
 
   &::after {
     content: '';
-    width: 450px;
+    width: 100%;
     height: 1px;
     background-color: rgb(233, 227, 233);
     position: absolute;
@@ -82,8 +92,8 @@ export const Camp = styled.div`
 `
 
 export const PlayerItemContainer = styled.div`
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   background-color: #ce9bbf;
   border-radius: 100%;
   margin: 1em auto;
@@ -92,15 +102,31 @@ export const PlayerItemContainer = styled.div`
   justify-content: center;
   border: solid 1px ${colors.dark};
   position: relative;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 
   &::after {
     content: '';
     position: absolute;
-    width: 86px;
-    height: 86px;
+    width: 66px;
+    height: 66px;
     top: -6px;
     left: -6px;
     border-radius: 100%;
     border: dashed 2px #ce9bbf;
   }
+`
+interface PlayerItemContainerProps {
+  areaName: string
+}
+
+export const CampArea = styled.div`
+  grid-area: ${(props: PlayerItemContainerProps) => props.areaName};
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 `

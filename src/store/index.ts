@@ -1,12 +1,14 @@
-import { UserState } from "./ducks/user/types";
-import { createStore, Store } from "redux";
+import { SquadState } from './ducks/squad/types'
+import { UserState } from './ducks/user/types'
+import { createStore, Store } from 'redux'
 
-import { rootReducers } from "./ducks";
+import { rootReducers } from './ducks'
 
 export interface ApplicationState {
-  users: UserState;
+  users: UserState
+  squad: SquadState
 }
 
-const store: Store<ApplicationState> = createStore(rootReducers);
+const store: Store<ApplicationState> = createStore(rootReducers)
 
-export default store;
+export default store

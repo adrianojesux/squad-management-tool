@@ -1,4 +1,11 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  forwardRef,
+  useRef,
+  useImperativeHandle,
+} from 'react'
 
 import { Container, PlayerList } from './styles'
 import { Player } from '../../interfaces/player'
@@ -12,7 +19,10 @@ interface SearchPlayerProps {
   disabled?: boolean
 }
 
-const SearchPlayer: React.FC<SearchPlayerProps> = ({ onSelect, disabled }) => {
+const SearchPlayer: React.ForwardRefRenderFunction<
+  HTMLInputElement,
+  SearchPlayerProps
+> = ({ onSelect, disabled }, ref) => {
   const [playersSearch, setPlayersSearch] = useState<Player[]>([])
   const [querySearch, setQuerySearch] = useState<string>('')
 
@@ -50,6 +60,7 @@ const SearchPlayer: React.FC<SearchPlayerProps> = ({ onSelect, disabled }) => {
         fieldType="input"
         id="input-team-web-site"
         disabled={disabled}
+        ref={ref}
       />
       <PlayerList>
         {playersSearch &&
@@ -65,4 +76,4 @@ const SearchPlayer: React.FC<SearchPlayerProps> = ({ onSelect, disabled }) => {
   )
 }
 
-export default SearchPlayer
+export default forwardRef(SearchPlayer)

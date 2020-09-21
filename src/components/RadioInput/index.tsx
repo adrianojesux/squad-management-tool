@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Container } from './styles'
 
-interface Field {
+export interface Field {
   title: string
   value: string
   checked?: boolean
