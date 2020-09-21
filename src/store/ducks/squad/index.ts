@@ -12,7 +12,9 @@ const reducer: Reducer<SquadState> = (state = INITIAL_STATE, action) => {
     switch (action.type) {
       case SquadTypes.ADD_SQUAD:
         draft.data.push(action.payload.data)
-        return { loading: false, error: false, data: [...draft.data] }
+        draft.loading = false
+        draft.error = false
+        return draft
       case SquadTypes.DELETE_SQUAD:
         const i = draft.data.findIndex(
           squad =>

@@ -46,11 +46,12 @@ const CreateSquad: React.FC = () => {
   }, [playerSelected])
 
   const enableSaveTeam = useCallback((): boolean => {
+    console.log(squadFormation)
     if (
       teamName?.trim() === '' ||
       teamDescription?.trim() === '' ||
       teamWebsite?.trim() === '' ||
-      teamType ||
+      !teamType ||
       teamFormation.trim() === ''
     ) {
       return false
@@ -62,13 +63,13 @@ const CreateSquad: React.FC = () => {
 
     for (let i = 0; i < squadFormation?.playerPositions?.length; i++) {
       const player = squadFormation?.playerPositions[i]
-      if (player.player.player_name.trim() === '') {
+      if (player && player.player.player_name.trim() === '') {
         return false
       }
     }
 
     return true
-  }, [mySquad, squadFormation])
+  }, [squadFormation])
 
   const onSelectPlayer = useCallback((player: Player) => {
     setPlayerSelected({ ...player })
