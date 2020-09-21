@@ -19,14 +19,14 @@ const PlayerListItem: React.FC<PlayerListItemProps> = ({
 
   return (
     <Container onClick={handleSelect}>
-      <p>
+      <p data-testid="item-field-name">
         <span>Name:</span> {player.player_name}
       </p>
-      <p>
+      <p data-testid="item-field-age">
         <span>Age:</span> {player.age}
       </p>
-      <p>
-        <span>Nacionality:</span> {player.nationality}
+      <p data-testid="item-field-nationality">
+        <span>Nationality:</span> {player.nationality}
       </p>
     </Container>
   )
