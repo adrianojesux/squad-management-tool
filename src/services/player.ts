@@ -13,6 +13,8 @@ class PlayerServices {
   async searchPlayer(name: string): Promise<Array<Player>> {
     try {
       if (MOCK) {
+        if (name.trim() === '') return []
+
         const {
           api: { players },
         } = playersMock as ResponseHolder<Player>
