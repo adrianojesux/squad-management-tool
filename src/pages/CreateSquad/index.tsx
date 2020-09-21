@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 
 import Panel from './../../components/Panel'
 import InputText from './../../components/Input'
@@ -31,6 +31,7 @@ const CreateSquad: React.FC = () => {
 
   const dispatch = useDispatch()
   const history = useHistory()
+  const searchInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (playerSelected && squadFormation) {
@@ -75,6 +76,7 @@ const CreateSquad: React.FC = () => {
 
   const onPickPlayer = useCallback((player: Player) => {
     setPlayerPicked({ ...player })
+    searchInputRef.current?.focus()
   }, [])
 
   const onSquadSelect = useCallback((squad: Formation) => {
@@ -193,6 +195,7 @@ const CreateSquad: React.FC = () => {
                 <SearchPlayer
                   onSelect={onSelectPlayer}
                   disabled={!playerPicked}
+                  ref={searchInputRef}
                 />
               </Collumn>
             </Row>

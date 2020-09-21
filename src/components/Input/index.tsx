@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, forwardRef } from 'react'
 
 import { Container } from './styles'
 
@@ -14,14 +14,10 @@ interface InputProps {
   ) => void
 }
 
-const Input: React.FC<InputProps> = ({
-  label,
-  placeHolder,
-  value,
-  onChange,
-  fieldType,
-  disabled,
-}) => {
+const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
+  { label, placeHolder, value, onChange, fieldType, disabled },
+  ref
+) => {
   const [focused, setFocused] = useState<boolean>(false)
   const [myValue, setMyValue] = useState<string>('')
 
@@ -59,6 +55,7 @@ const Input: React.FC<InputProps> = ({
           placeholder={placeHolder}
           onChange={handleInputChange}
           disabled={disabled}
+          ref={ref}
         />
       )}
       {fieldType == 'text_area' && (
@@ -78,4 +75,4 @@ const Input: React.FC<InputProps> = ({
   )
 }
 
-export default Input
+export default forwardRef(Input)
