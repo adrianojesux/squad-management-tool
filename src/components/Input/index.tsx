@@ -44,7 +44,7 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   return (
     <Container focused={focused}>
       <label htmlFor="input-id">{label}</label>
-      {fieldType == 'input' && (
+      {fieldType === 'input' && (
         <input
           type="text"
           name="input-id"
@@ -58,7 +58,7 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
           ref={ref}
         />
       )}
-      {fieldType == 'text_area' && (
+      {fieldType === 'text_area' && (
         <textarea
           name="input-id"
           id="input-id"

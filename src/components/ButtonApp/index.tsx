@@ -1,4 +1,4 @@
-import React, { MouseEvent, HTMLAttributes, ButtonHTMLAttributes } from 'react'
+import React, { MouseEvent, ButtonHTMLAttributes } from 'react'
 
 import { Button } from './styles'
 

@@ -30,6 +30,7 @@ const reducer: Reducer<SquadState> = (state = INITIAL_STATE, action) => {
             squad.name.toLowerCase() === action.payload.data.name.toLowerCase()
         )
         draft.data[index] = { ...draft.data[index], ...action.payload.data }
+        return draft
       default:
         return draft
     }

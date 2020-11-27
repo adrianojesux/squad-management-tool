@@ -3,8 +3,6 @@ import React, {
   useEffect,
   useCallback,
   forwardRef,
-  useRef,
-  useImperativeHandle,
 } from 'react'
 
 import { Container, PlayerList } from './styles'

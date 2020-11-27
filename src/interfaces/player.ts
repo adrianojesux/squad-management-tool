@@ -1,4 +1,3 @@
-import colors from '../styles/colors'
 import { uuid } from 'uuidv4'
 
 export class Player {

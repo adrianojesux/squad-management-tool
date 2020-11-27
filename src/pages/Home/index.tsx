@@ -3,7 +3,7 @@ import { MdAdd } from 'react-icons/md'
 
 import Panel from './../../components/Panel'
 import Table from './../../components/Table'
-import HighList, { SquadInfo } from './../../components/HighList'
+import HighList from './../../components/HighList'
 import BalancePlayers from './../../components/BalancePlayers'
 
 import { Container, ButtonAdd, Row } from './styles'
@@ -29,8 +29,6 @@ const Home: React.FC = () => {
     }
     return players.sort((a, b) => a.age - b.age).splice(0, 5)
   }
-
-  function getSquadAvgOldPlayer() {}
 
   useEffect(() => {
     setSquadList(squads)

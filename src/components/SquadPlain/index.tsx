@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { MdAdd } from 'react-icons/md'
 
 import SquadService from './../../services/squad'

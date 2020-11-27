@@ -6,7 +6,6 @@ import RadioInput, { Field } from './../../components/RadioInput'
 import InputTags from './../../components/InputTags'
 import SquadPlain from './../../components/SquadPlain'
 import ButtonApp from './../../components/ButtonApp'
-import PlayerListItem from '../../components/PlayerListItem'
 import SearchPlayer from './../../components/SearchPlayer'
 import SquadContext from './contex'
 import { addSquad } from './../../store/ducks/squad/actions'
@@ -20,7 +19,6 @@ import { useHistory } from 'react-router-dom'
 
 const CreateSquad: React.FC = () => {
   const [squadFormation, setSquadFormation] = useState<Formation>()
-  const [mySquad, setMySquad] = useState<Squad>()
   const [playerSelected, setPlayerSelected] = useState<Player>()
   const [playerPicked, setPlayerPicked] = useState<Player>()
   const [teamName, setTeamName] = useState('')
@@ -43,7 +41,7 @@ const CreateSquad: React.FC = () => {
       ].player = { ...playerSelected }
       setSquadFormation({ ...squadCopy })
     }
-  }, [playerSelected])
+  }, [playerSelected]);
 
   const enableSaveTeam = useCallback((): boolean => {
     console.log(squadFormation)
@@ -115,7 +113,7 @@ const CreateSquad: React.FC = () => {
         name: teamName,
         description: teamDescription,
         team_website: teamWebsite,
-        team_type: teamType == 'real' ? 'real' : 'fantasy',
+        team_type: teamType === 'real' ? 'real' : 'fantasy',
         formation: teamFormation,
         players: squadFormation?.playerPositions || [],
         tags: [],
